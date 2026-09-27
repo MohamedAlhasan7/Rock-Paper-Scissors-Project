@@ -43,6 +43,8 @@ enGameChoice ComputerChoice();
 
 enWinner WhoWinTheRound(stRoundInfo RoundInfo);
 
+enWinner WhoWonTheGame(short Player1Wintimes, short ComputerWintimes);
+
 string WinnerName(enWinner Winner);
 
 string ChoiceName(enGameChoice GameChoice);

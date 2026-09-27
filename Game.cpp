@@ -44,6 +44,16 @@ enWinner WhoWinTheRound(stRoundInfo RoundInfo)
 	}
 }
 
+enWinner WhoWonTheGame(short Player1Wintimes, short ComputerWintimes)
+{
+	if (Player1Wintimes > ComputerWintimes)
+		return enWinner::Player1;
+	else if (ComputerWintimes > Player1Wintimes)
+		return enWinner::Computer;
+	else
+		return enWinner::Draw;
+}
+
 string WinnerName(enWinner Winner)
 {
 	switch (Winner)
@@ -103,4 +113,5 @@ stGameResults PlayGame(short HowManyRounds)
 
 		PrintRoundResults(RoundInfo);
 	}
+	return { HowManyRounds, Player1Wintimes, ComputerWintimes, Drawtimes, WhoWonTheGame(Player1Wintimes, ComputerWintimes), WinnerName(WhoWonTheGame(Player1Wintimes, ComputerWintimes)) };
 }
