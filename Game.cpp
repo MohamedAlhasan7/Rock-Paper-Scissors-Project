@@ -25,6 +25,25 @@ enGameChoice ComputerChoice()
 	return enGameChoice(RandNumber(1, 3));
 }
 
+enWinner WhoWinTheRound(stRoundInfo RoundInfo)
+{
+	if (RoundInfo.Player1Choice == RoundInfo.ComputerChoice)
+		return enWinner::Draw;
+
+	switch (RoundInfo.Player1Choice)
+	{
+	case enGameChoice::Stone:
+		return (RoundInfo.ComputerChoice == enGameChoice::Paper) ?
+			enWinner::Computer : enWinner::Player1;
+	case enGameChoice::Paper:
+		return (RoundInfo.ComputerChoice == enGameChoice::Scissors) ?
+			enWinner::Computer : enWinner::Player1;
+	case enGameChoice::Scissors:
+		return (RoundInfo.ComputerChoice == enGameChoice::Stone) ?
+			enWinner::Computer : enWinner::Player1;
+	}
+}
+
 stGameResults PlayGame(short HowManyRounds)
 {
 	stRoundInfo RoundInfo;
@@ -37,5 +56,6 @@ stGameResults PlayGame(short HowManyRounds)
 		RoundInfo.RoundNumber = GameRound;
 		RoundInfo.Player1Choice = Player1Choice();
 		RoundInfo.ComputerChoice = ComputerChoice();
+		RoundInfo.Winner = WhoWinTheRound(RoundInfo);
 	}
 }

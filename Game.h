@@ -41,4 +41,6 @@ enGameChoice Player1Choice();
 
 enGameChoice ComputerChoice();
 
+enWinner WhoWinTheRound(stRoundInfo RoundInfo);
+
 stGameResults PlayGame(short HowManyRounds);
