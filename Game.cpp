@@ -1,7 +1,7 @@
-#include "iostream"
 #include "Game.h"
-#include "cstdlib"
-#include "ctime"
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int ReadNumber(string Message)
@@ -11,7 +11,7 @@ int ReadNumber(string Message)
 	{
 		cout << Message;
 		cin >> Number;
-	} while (Number < 0);
+	} while (Number <= 0);
 	return Number;
 }
 
