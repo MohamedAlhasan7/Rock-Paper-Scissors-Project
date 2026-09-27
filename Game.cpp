@@ -114,6 +114,22 @@ void PrintGameResults(stGameResults GameResults)
 	cout << "\t\t\t_______________________________________________\t\t\t\n" << endl;
 }
 
+void ScreenColor(enWinner Winner)
+{
+	switch (Winner)
+	{
+	case enWinner::Player1:
+		system("color 2F");
+		break;
+	case enWinner::Computer:
+		system("color 4F");
+		break;
+	case enWinner::Draw:
+		system("color 6F");
+		break;
+	}
+}
+
 stGameResults PlayGame(short HowManyRounds)
 {
 	stRoundInfo RoundInfo;
@@ -137,6 +153,7 @@ stGameResults PlayGame(short HowManyRounds)
 			Drawtimes++;
 
 		PrintRoundResults(RoundInfo);
+		ScreenColor(RoundInfo.Winner);
 	}
 	return { HowManyRounds, Player1Wintimes, ComputerWintimes, Drawtimes, WhoWonTheGame(Player1Wintimes, ComputerWintimes), WinnerName(WhoWonTheGame(Player1Wintimes, ComputerWintimes)) };
 }
@@ -147,6 +164,7 @@ void StartGame()
 	do
 	{
 		system("cls");
+		system("color 07");
 		stGameResults GameResults = PlayGame(ReadNumber("How Many Rounds 1 To 10? "));
 		PrintGameResults(GameResults);
 		cout << "\n\t\t\tDo you want to play again? Y/N? ";

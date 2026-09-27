@@ -53,6 +53,8 @@ string ChoiceName(enGameChoice GameChoice);
 
 void PrintRoundResults(stRoundInfo RoundInfo);
 
+void ScreenColor(enWinner Winner);
+
 stGameResults PlayGame(short HowManyRounds);
 
 void StartGame();
