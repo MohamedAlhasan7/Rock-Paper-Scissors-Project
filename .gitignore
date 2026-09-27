@@ -69,6 +69,6 @@ Testing/
 .cache/
 .vs
 x64
- Rock-Pap.bca573a5
- Debug
+Rock-Pap.bca573a5
+Debug
 *.vcxproj.user
