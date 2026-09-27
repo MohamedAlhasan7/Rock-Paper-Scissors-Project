@@ -44,6 +44,19 @@ enWinner WhoWinTheRound(stRoundInfo RoundInfo)
 	}
 }
 
+string WinnerName(enWinner Winner)
+{
+	switch (Winner)
+	{
+	case enWinner::Player1:
+		return "Player1";
+	case enWinner::Computer:
+		return "Computer";
+	case enWinner::Draw:
+		return "Draw";
+	}
+}
+
 stGameResults PlayGame(short HowManyRounds)
 {
 	stRoundInfo RoundInfo;
@@ -57,5 +70,6 @@ stGameResults PlayGame(short HowManyRounds)
 		RoundInfo.Player1Choice = Player1Choice();
 		RoundInfo.ComputerChoice = ComputerChoice();
 		RoundInfo.Winner = WhoWinTheRound(RoundInfo);
+		RoundInfo.WinnerName = WinnerName(RoundInfo.Winner);
 	}
 }
