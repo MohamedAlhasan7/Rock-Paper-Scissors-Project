@@ -4,6 +4,17 @@
 #include "ctime"
 using namespace std;
 
+int ReadNumber(string Message)
+{
+	int Number;
+	do
+	{
+		cout << Message;
+		cin >> Number;
+	} while (Number < 0);
+	return Number;
+}
+
 int RandNumber(int From, int To)
 {
 	return rand() % (To - From + 1) + From;
@@ -89,6 +100,20 @@ void PrintRoundResults(stRoundInfo RoundInfo)
 	cout << "_________________________________________\n" << endl;
 }
 
+void PrintGameResults(stGameResults GameResults)
+{
+	cout << "\t\t\t_______________________________________________\t\t\t\n" << endl;
+	cout << "\t\t\t\t\t ++ Game Over ++ \t\t\t\t\t" << endl;
+	cout << "\t\t\t_______________________________________________\t\t\t\n" << endl;
+	cout << "\t\t\t________________[ Game Results ]_______________ \t\t\t\n" << endl;
+	cout << "\t\t\tGame Round : " << GameResults.GameRounds << endl;
+	cout << "\t\t\tPlayer1 Win Times : " << GameResults.Player1Wintimes << endl;
+	cout << "\t\t\tComputer Win Times : " << GameResults.ComputerWintimes << endl;
+	cout << "\t\t\tDraw Times : " << GameResults.Drawtimes << endl;
+	cout << "\t\t\tFinal Winner : " << GameResults.WinnerName << endl;
+	cout << "\t\t\t_______________________________________________\t\t\t\n" << endl;
+}
+
 stGameResults PlayGame(short HowManyRounds)
 {
 	stRoundInfo RoundInfo;
@@ -114,4 +139,17 @@ stGameResults PlayGame(short HowManyRounds)
 		PrintRoundResults(RoundInfo);
 	}
 	return { HowManyRounds, Player1Wintimes, ComputerWintimes, Drawtimes, WhoWonTheGame(Player1Wintimes, ComputerWintimes), WinnerName(WhoWonTheGame(Player1Wintimes, ComputerWintimes)) };
+}
+
+void StartGame()
+{
+	char PlayAgain = 'Y';
+	do
+	{
+		system("cls");
+		stGameResults GameResults = PlayGame(ReadNumber("How Many Rounds 1 To 10? "));
+		PrintGameResults(GameResults);
+		cout << "\n\t\t\tDo you want to play again? Y/N? ";
+		cin >> PlayAgain;
+	} while (PlayAgain == 'Y' || PlayAgain == 'y');
 }

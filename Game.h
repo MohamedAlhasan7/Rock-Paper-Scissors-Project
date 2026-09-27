@@ -35,6 +35,8 @@ struct stGameResults
 	string WinnerName;
 };
 
+int ReadNumber(string Message);
+
 int RandNumber(int From, int To);
 
 enGameChoice Player1Choice();
@@ -52,3 +54,5 @@ string ChoiceName(enGameChoice GameChoice);
 void PrintRoundResults(stRoundInfo RoundInfo);
 
 stGameResults PlayGame(short HowManyRounds);
+
+void StartGame();
