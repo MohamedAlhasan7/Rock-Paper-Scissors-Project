@@ -35,6 +35,10 @@ struct stGameResults
 	string WinnerName;
 };
 
-stGameResults PlayGame(short HowManyRounds);
+int RandNumber(int From, int To);
 
 enGameChoice Player1Choice();
+
+enGameChoice ComputerChoice();
+
+stGameResults PlayGame(short HowManyRounds);

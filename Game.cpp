@@ -1,6 +1,13 @@
 #include "iostream"
 #include "Game.h"
+#include "cstdlib"
+#include "ctime"
 using namespace std;
+
+int RandNumber(int From, int To)
+{
+	return rand() % (To - From + 1) + From;
+}
 
 enGameChoice Player1Choice()
 {
@@ -11,6 +18,11 @@ enGameChoice Player1Choice()
 		cin >> Choice;
 	} while (Choice < 1 || Choice > 3);
 	return enGameChoice(Choice);
+}
+
+enGameChoice ComputerChoice()
+{
+	return enGameChoice(RandNumber(1, 3));
 }
 
 stGameResults PlayGame(short HowManyRounds)
@@ -24,5 +36,6 @@ stGameResults PlayGame(short HowManyRounds)
 	{
 		RoundInfo.RoundNumber = GameRound;
 		RoundInfo.Player1Choice = Player1Choice();
+		RoundInfo.ComputerChoice = ComputerChoice();
 	}
 }
