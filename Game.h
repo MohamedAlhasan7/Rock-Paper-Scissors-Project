@@ -45,4 +45,8 @@ enWinner WhoWinTheRound(stRoundInfo RoundInfo);
 
 string WinnerName(enWinner Winner);
 
+string ChoiceName(enGameChoice GameChoice);
+
+void PrintRoundResults(stRoundInfo RoundInfo);
+
 stGameResults PlayGame(short HowManyRounds);

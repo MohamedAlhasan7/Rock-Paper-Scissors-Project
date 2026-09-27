@@ -57,6 +57,28 @@ string WinnerName(enWinner Winner)
 	}
 }
 
+string ChoiceName(enGameChoice GameChoice)
+{
+	switch (GameChoice)
+	{
+		case enGameChoice::Stone:
+		return "Stone";
+		case enGameChoice::Paper:
+		return "Paper";
+		case enGameChoice::Scissors:
+		return "Scissors";
+	}
+}
+
+void PrintRoundResults(stRoundInfo RoundInfo)
+{
+	cout << "\n_______________ Round [" << RoundInfo.RoundNumber << "] _______________\n\n";
+	cout << "Player1 Choice: " << ChoiceName(RoundInfo.Player1Choice) << endl;
+	cout << "Computer Choice: " << ChoiceName(RoundInfo.ComputerChoice) << endl;
+	cout << "Round Winner   : [" << RoundInfo.WinnerName << "]\n";
+	cout << "_________________________________________\n" << endl;
+}
+
 stGameResults PlayGame(short HowManyRounds)
 {
 	stRoundInfo RoundInfo;
@@ -71,5 +93,14 @@ stGameResults PlayGame(short HowManyRounds)
 		RoundInfo.ComputerChoice = ComputerChoice();
 		RoundInfo.Winner = WhoWinTheRound(RoundInfo);
 		RoundInfo.WinnerName = WinnerName(RoundInfo.Winner);
+
+		if (RoundInfo.Winner == enWinner::Player1)
+			Player1Wintimes++;
+		else if (RoundInfo.Winner == enWinner::Computer)
+			ComputerWintimes++;
+		else
+			Drawtimes++;
+
+		PrintRoundResults(RoundInfo);
 	}
 }
