@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+using namespace std;
 
 enum enGameChoice
 {
@@ -32,3 +34,7 @@ struct stGameResults
 	enWinner GameWinner;
 	string WinnerName;
 };
+
+stGameResults PlayGame(short HowManyRounds);
+
+enGameChoice Player1Choice();
