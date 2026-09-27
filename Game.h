@@ -22,3 +22,13 @@ struct stRoundInfo
 	enWinner Winner;
 	string WinnerName;
 };
+
+struct stGameResults
+{
+	short GameRounds = 0;
+	short Player1Wintimes = 0;
+	short ComputerWintimes = 0;
+	short Drawtimes = 0;
+	enWinner GameWinner;
+	string WinnerName;
+};
